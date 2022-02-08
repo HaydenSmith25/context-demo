@@ -4,19 +4,19 @@
       "userId": 1,
       "id": 1,
       "title": "walk dog",
-      "completed": false
+      "completed": true
     },
     {
       "userId": 1,
       "id": 2,
       "title": "take out trash",
-      "completed": true
+      "completed": false
     },
     {
       "userId": 1,
       "id": 3,
       "title": "do dishes",
-      "completed": false
+      "completed": true
     },
     {
       "userId": 1,
