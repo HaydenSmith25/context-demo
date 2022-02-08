@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "walk dog",
+      "completed": false
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "take out trash",
+      "completed": true
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "title": "do dishes",
+      "completed": false
+    },
+    {
+      "userId": 1,
+      "id": 4,
+      "title": "vacuum",
+      "completed": true
+    },
+    {
+      "userId": 1,
+      "id": 5,
+      "title": "clean bathrooms",
+      "completed": false
+    }
+  ]
+}
