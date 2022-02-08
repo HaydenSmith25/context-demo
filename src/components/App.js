@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../context/TodoContext';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Todo = styled.div`
@@ -24,7 +23,21 @@ const Todo = styled.div`
 `;
 
 function App() {
-  const { todos, markTodoAsDone } = useContext(TodoContext);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const getTodos = async () => {
+      try {
+        const response = await fetch('http://localhost:5500/todos');
+        const data = await response.json();
+        setTodos(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getTodos();
+  }, []);
 
   return (
     <section>
@@ -36,9 +49,6 @@ function App() {
               type="checkbox"
               name="completed"
               defaultChecked={todo.completed}
-              onChange={(e) => {
-                markTodoAsDone({ ...todo, completed: e.target.checked });
-              }}
             />
           </label>
         </Todo>
