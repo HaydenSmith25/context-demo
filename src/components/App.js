@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
+import styled from "styled-components";
 
 const Todo = styled.div`
   & {
@@ -15,7 +16,7 @@ const Todo = styled.div`
   & h3 {
     margin: 0;
     text-decoration: ${({ completed }) =>
-      completed ? 'line-through' : 'inherit'};
+      completed ? "line-through" : "inherit"};
   }
   & label {
     padding: 4px;
@@ -23,22 +24,7 @@ const Todo = styled.div`
 `;
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    const getTodos = async () => {
-      try {
-        const response = await fetch('http://localhost:5500/todos');
-        const data = await response.json();
-        setTodos(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getTodos();
-  }, []);
-
+  const { todos, markTodoAsDone } = useContext(TodoContext);
   return (
     <section>
       {todos.map((todo) => (
@@ -49,6 +35,9 @@ function App() {
               type="checkbox"
               name="completed"
               defaultChecked={todo.completed}
+              onChange={(e) => {
+                markTodoAsDone({ ...todo, completed: e.target.checked });
+              }}
             />
           </label>
         </Todo>
